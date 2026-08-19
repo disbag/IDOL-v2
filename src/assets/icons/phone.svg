@@ -1,0 +1,8 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Phone">
+<g id="Vector">
+<path d="M16 20V21H8V20H16ZM17 19V5C17 4.48232 16.6067 4.05621 16.1025 4.00488L16 4H8C7.44772 4 7 4.44772 7 5V19C7 19.5523 7.44772 20 8 20V21C6.96435 21 6.113 20.2128 6.01074 19.2041L6 19V5C6 3.89543 6.89543 3 8 3H16L16.2041 3.01074C17.2128 3.113 18 3.96435 18 5V19C18 20.0357 17.2128 20.887 16.2041 20.9893L16 21V20C16.5523 20 17 19.5523 17 19Z" fill="var(--fill-0, #181818)"/>
+<path d="M13 18V19H11V18H13Z" fill="var(--fill-0, #181818)"/>
+</g>
+</g>
+</svg>

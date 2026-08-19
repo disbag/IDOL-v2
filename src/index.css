@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300..800;1,300..800&display=swap");
+@import "tailwindcss";
+
+@custom-variant mobile (@media (max-width: 767px));
+
+@theme {
+  --font-body: "Montserrat", sans-serif;
+
+  --color-text-primary: #181818;
+  --color-text-secondary: #8c8c8c;
+  --color-text-disabled: #bababa;
+
+  --color-background-base: #ffffff;
+  --color-background-secondary: #f9f9f9;
+
+  --color-control-thirty: #e8e8e8;
+  --color-control-thirty-hover: #d1d1d1;
+  --color-control-border: #e8e8e8;
+  --color-control-primary: #181818;
+  --color-control-primary-hover: #2f2f2f;
+  --color-control-secondary: #5e5e5e;
+
+  --color-text-primary-hover: #464646;
+
+  --color-brand-black: #181818;
+  --color-brand-white: #ffffff;
+
+  --text-xs: 8px;
+  --text-xs--line-height: 12px;
+  --text-sm: 10px;
+  --text-sm--line-height: 16px;
+  --text-md: 12px;
+  --text-md--line-height: 18px;
+}
+
+:root {
+  --mobile-cta-h: 124px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background: var(--color-background-base);
+}
+
+button:not(:disabled),
+a,
+[role='button'] {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes size-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.size-dropdown-enter {
+  animation: size-dropdown-in 0.18s ease-out;
+}
+
+@keyframes footer-accordion-in {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 400px;
+  }
+}
+
+.footer-accordion-enter {
+  animation: footer-accordion-in 0.2s ease-out;
+}
+
+@keyframes lookbook-pager-fill {
+  from {
+    width: 8px;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.lookbook-pager-fill {
+  width: 8px;
+  animation: lookbook-pager-fill 5s linear forwards;
+}
+
+.lookbook-pager-fill.is-paused {
+  animation-play-state: paused;
+}
