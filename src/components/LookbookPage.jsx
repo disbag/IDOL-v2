@@ -12,6 +12,7 @@ import chevronRight from '../assets/icons/chevron-right.svg'
 const SLIDE_MS = 750
 const EASE = 'cubic-bezier(0.77, 0, 0.175, 1)'
 const PARALLAX = 8
+const PEEK_SCALE = 0.86
 
 function prefersReducedMotion() {
   return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
@@ -284,13 +285,19 @@ function slideStyle(i, index, prevIndex, direction, phase) {
   const isPrev = i === prevIndex
   const animate = phase === 'run'
   const transition = animate ? `transform ${SLIDE_MS}ms ${EASE}` : 'none'
+  // Incoming panel enters from the side it's approaching from, so it should
+  // shrink toward that same edge; the outgoing panel shrinks toward the
+  // opposite edge as it leaves — mirrors a coverflow-style carousel.
+  const incomingOrigin = direction === 1 ? 'right center' : 'left center'
+  const outgoingOrigin = direction === 1 ? 'left center' : 'right center'
 
   if (isActive && phase === 'start') {
     return {
       zIndex: 2,
       visibility: 'visible',
       pointerEvents: 'none',
-      transform: `translate3d(${direction * 100}%, 0, 0)`,
+      transformOrigin: incomingOrigin,
+      transform: `translate3d(${direction * 100}%, 0, 0) scale(${PEEK_SCALE})`,
       transition: 'none',
     }
   }
@@ -300,7 +307,8 @@ function slideStyle(i, index, prevIndex, direction, phase) {
       zIndex: 2,
       visibility: 'visible',
       pointerEvents: 'none',
-      transform: 'translate3d(0, 0, 0)',
+      transformOrigin: incomingOrigin,
+      transform: 'translate3d(0, 0, 0) scale(1)',
       transition,
     }
   }
@@ -310,8 +318,30 @@ function slideStyle(i, index, prevIndex, direction, phase) {
       zIndex: 1,
       visibility: 'visible',
       pointerEvents: 'auto',
-      transform: 'translate3d(0, 0, 0)',
+      transform: 'translate3d(0, 0, 0) scale(1)',
       transition: 'none',
+    }
+  }
+
+  if (isPrev && phase === 'start') {
+    return {
+      zIndex: 1,
+      visibility: 'visible',
+      pointerEvents: 'none',
+      transformOrigin: outgoingOrigin,
+      transform: 'translate3d(0, 0, 0) scale(1)',
+      transition: 'none',
+    }
+  }
+
+  if (isPrev && phase === 'run') {
+    return {
+      zIndex: 1,
+      visibility: 'visible',
+      pointerEvents: 'none',
+      transformOrigin: outgoingOrigin,
+      transform: `translate3d(${-direction * 100}%, 0, 0) scale(${PEEK_SCALE})`,
+      transition,
     }
   }
 
@@ -320,7 +350,7 @@ function slideStyle(i, index, prevIndex, direction, phase) {
       zIndex: 1,
       visibility: 'visible',
       pointerEvents: 'none',
-      transform: 'translate3d(0, 0, 0)',
+      transform: 'translate3d(0, 0, 0) scale(1)',
       transition: 'none',
     }
   }
@@ -329,7 +359,7 @@ function slideStyle(i, index, prevIndex, direction, phase) {
     zIndex: 0,
     visibility: 'hidden',
     pointerEvents: 'none',
-    transform: 'translate3d(0, 0, 0)',
+    transform: 'translate3d(0, 0, 0) scale(1)',
     transition: 'none',
   }
 }
