@@ -6,7 +6,7 @@ import userIcon from '../assets/icons/user.svg'
 import heartIcon from '../assets/icons/heart-outline.svg'
 import cartIcon from '../assets/icons/cart.svg'
 
-export default function Header({ cartCount = 4, opaqueAfterRef }) {
+export default function Header({ cartCount = 4, opaqueAfterRef, scrollRootRef, scrollKey }) {
   const headerRef = useRef(null)
   const [scrolled, setScrolled] = useState(false)
 
@@ -22,13 +22,14 @@ export default function Header({ cartCount = 4, opaqueAfterRef }) {
     }
 
     update()
-    window.addEventListener('scroll', update, { passive: true })
+    const scrollTarget = scrollRootRef?.current ?? window
+    scrollTarget.addEventListener('scroll', update, { passive: true })
     window.addEventListener('resize', update)
     return () => {
-      window.removeEventListener('scroll', update)
+      scrollTarget.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
     }
-  }, [opaqueAfterRef])
+  }, [opaqueAfterRef, scrollRootRef, scrollKey])
 
   return (
     <header

@@ -18,7 +18,7 @@ export function LookProductCard({ image, className = '' }) {
   )
 }
 
-export default function ProductCard({ image, name, price, colors, width, className = '' }) {
+export default function ProductCard({ image, name, price, oldPrice, colors, badge, width, className = '' }) {
   return (
     <div
       className={`flex flex-col items-start gap-[8px] bg-brand-white pb-[16px] ${className}`}
@@ -28,12 +28,20 @@ export default function ProductCard({ image, name, price, colors, width, classNa
         <div className="aspect-[165/248]">
           <img src={image} alt={name} className="pointer-events-none absolute inset-0 size-full object-cover" />
         </div>
+        {badge && (
+          <div className="absolute left-[12px] top-[12px] text-[8px] font-medium uppercase leading-[10px] text-text-primary">
+            {badge}
+          </div>
+        )}
       </div>
       <div className="flex w-full items-start gap-[2px]">
         <div className="flex flex-1 flex-col items-start gap-[2px]">
           <p className="line-clamp-2 w-full text-[8px] uppercase leading-[10px] text-text-primary">{name}</p>
           <div className="flex h-[10px] items-start gap-[4px]">
             <p className="whitespace-nowrap text-[8px] uppercase leading-[10px] text-text-primary">{price}</p>
+            {oldPrice && (
+              <p className="whitespace-nowrap text-[8px] leading-[10px] text-text-secondary line-through">{oldPrice}</p>
+            )}
           </div>
           {colors && (
             <p className="w-full overflow-hidden text-ellipsis text-[8px] leading-[10px] text-text-secondary">

@@ -37,6 +37,13 @@
   --mobile-cta-h: 124px;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -91,22 +98,4 @@ button:disabled {
 
 .footer-accordion-enter {
   animation: footer-accordion-in 0.2s ease-out;
-}
-
-@keyframes lookbook-pager-fill {
-  from {
-    width: 8px;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-.lookbook-pager-fill {
-  width: 8px;
-  animation: lookbook-pager-fill 5s linear forwards;
-}
-
-.lookbook-pager-fill.is-paused {
-  animation-play-state: paused;
 }

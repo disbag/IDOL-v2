@@ -25,7 +25,7 @@ function preload(src) {
 
 function GridCell({ photo, incoming, fading }) {
   return (
-    <div className="relative aspect-[224/350] min-h-0 min-w-0 overflow-hidden bg-background-secondary">
+    <div className="relative aspect-[224/350] min-h-0 min-w-0 overflow-hidden bg-background-secondary mobile:aspect-[149/240]">
       <img
         src={photo.src}
         alt={photo.alt}
@@ -51,11 +51,14 @@ function patchCells(cells, slot, patch) {
   return cells.map((cell, index) => (index === slot ? { ...cell, ...patch } : cell))
 }
 
-export default function LookbookGrid({ photos }) {
+export default function LookbookGrid({ photos, active = true }) {
   const rootRef = useRef(null)
+  const activeRef = useRef(active)
   const cellsRef = useRef(Array.from({ length: SLOTS }, (_, i) => ({ shown: i, incoming: null, fading: false })))
   const lastSlotRef = useRef(-1)
   const [cells, setCells] = useState(cellsRef.current)
+
+  activeRef.current = active
 
   const commit = (next) => {
     cellsRef.current = next
@@ -120,7 +123,7 @@ export default function LookbookGrid({ photos }) {
           ? STAGGER_MIN_MS + Math.random() * (STAGGER_MAX_MS - STAGGER_MIN_MS)
           : 400
         await delay(wait)
-        if (cancelled || !inView) continue
+        if (cancelled || !inView || !activeRef.current) continue
         void swapOnce()
       }
     }
@@ -135,7 +138,7 @@ export default function LookbookGrid({ photos }) {
   return (
     <div
       ref={rootRef}
-      className="grid w-full grid-cols-5 gap-[20px] px-[120px]"
+      className="grid w-full grid-cols-5 gap-[20px] px-[120px] mobile:grid-cols-2 mobile:gap-[12px] mobile:px-[40px]"
     >
       {cells.map((cell, index) => (
         <GridCell
