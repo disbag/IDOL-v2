@@ -148,7 +148,6 @@ export const homeSlides = [
     hero: {
       bg: '#d9d7d3',
       navInvert: true,
-      gradient: 'linear-gradient(to top left, rgba(0,0,0,0.45), rgba(0,0,0,0) 45%)',
       heading: {
         lines: ['Мужская', 'коллекция', 'осень-зима', '2026'],
       },
