@@ -9,7 +9,7 @@ import { footerColumns, footerSocial } from '../data/productData'
 import chevronLeft from '../assets/icons/chevron-left.svg'
 import chevronRight from '../assets/icons/chevron-right.svg'
 
-const SLIDE_MS = 1400
+const SLIDE_MS = 1000
 const EASE = 'cubic-bezier(0.45, 0, 0.15, 1)'
 const PARALLAX = 8
 const PEEK_SCALE = 0.86
