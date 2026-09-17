@@ -81,6 +81,36 @@ function AllLooksButton({ className = '' }) {
   )
 }
 
+function PhotoGrid2x2({ items }) {
+  return (
+    <div className="grid w-full grid-cols-2 gap-[40px] p-[40px] mobile:gap-[12px] mobile:p-[12px]">
+      {items.map((item) => (
+        <div key={item.src} className="relative aspect-[660/840] overflow-hidden">
+          <img
+            src={item.src}
+            alt={item.alt}
+            draggable={false}
+            className="absolute inset-0 size-full object-cover"
+            style={item.style}
+          />
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function HeroHeading({ lines }) {
+  return (
+    <div className="absolute bottom-[120px] right-[120px] z-[1] text-right text-white mobile:bottom-[26%] mobile:right-[40px] mobile:left-[40px] mobile:text-left">
+      {lines.map((line) => (
+        <p key={line} className="text-[28px] font-bold leading-[34px] mobile:text-[22px] mobile:leading-[27px]">
+          {line}
+        </p>
+      ))}
+    </div>
+  )
+}
+
 function CategoryGrid({ items }) {
   return (
     <section className="grid w-full grid-cols-4 gap-[20px] px-[120px] pb-[120px] pt-[120px] mobile:grid-cols-2 mobile:gap-[12px] mobile:p-[40px]">
@@ -167,6 +197,7 @@ function SlideBody({ slide, active }) {
 
   return (
     <div className="flex w-full flex-col">
+      {slide.grid && <PhotoGrid2x2 items={slide.grid} />}
       {slide.bands.map((band, i) => (
         <PhotoBand
           key={band.images[0].src}
@@ -181,6 +212,12 @@ function SlideBody({ slide, active }) {
                 Новая коллекция IDOL посвящена современному тейлорингу, в котором структурность и мягкость создают
                 ощущение силы
               </p>
+              <CollectionButton className="mobile:w-full" />
+            </div>
+          )}
+          {slide.ctaBox && i === slide.bands.length - 1 && (
+            <div className="absolute bottom-[80px] left-[80px] z-[1] flex max-w-[546px] flex-col items-start gap-[24px] bg-[#181818] p-[40px] mobile:bottom-[20px] mobile:left-[20px] mobile:right-[20px] mobile:max-w-none mobile:p-[24px]">
+              <p className="text-sm uppercase leading-[20px] text-white">{slide.ctaBox.text}</p>
               <CollectionButton className="mobile:w-full" />
             </div>
           )}
@@ -275,6 +312,7 @@ function Hero({ slide, caption, shift, animate, children }) {
         )}
       </div>
       {slide.caption && caption}
+      {slide.heading && <HeroHeading lines={slide.heading.lines} />}
       {children}
     </section>
   )

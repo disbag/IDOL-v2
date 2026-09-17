@@ -52,6 +52,12 @@ import col09 from '../assets/lookbook/products/09.png'
 import col10 from '../assets/lookbook/products/10.png'
 import col11 from '../assets/lookbook/products/11.png'
 import col12 from '../assets/lookbook/products/12.png'
+import mensHero from '../assets/lookbook/mens/hero.png'
+import mensGrid1Left from '../assets/lookbook/mens/grid1-left.png'
+import mensGrid1Right from '../assets/lookbook/mens/grid1-right.png'
+import mensGrid2Left from '../assets/lookbook/mens/grid2-left.png'
+import mensGrid2Right from '../assets/lookbook/mens/grid2-right.png'
+import mensFinalBand from '../assets/lookbook/mens/final-band.png'
 
 const photo = (src, style, alt = 'Образ коллекции') => ({ src, alt, style })
 
@@ -131,6 +137,42 @@ export const homeSlides = [
         mobileClassName: 'mobile:aspect-[390/520]',
         images: [photo(g1s3, { inset: 0, width: '100%', height: '100%', objectPosition: 'top center' })],
         mobileImages: [photo(g1s3Mobile, { inset: 0, width: '100%', height: '100%', objectPosition: 'top center' })],
+      },
+    ],
+  },
+  {
+    title: 'Мужская коллекция',
+    ctaBox: {
+      text: 'Прямые и свободные силуэты, структурированные пиджаки, объёмные брюки и фактурные материалы — шерсть, кашемир, кожа и деним — формируют гардероб, который легко адаптируется к разным сценариям современной жизни',
+    },
+    hero: {
+      bg: '#d9d7d3',
+      navInvert: true,
+      gradient: 'linear-gradient(to top left, rgba(0,0,0,0.45), rgba(0,0,0,0) 45%)',
+      heading: {
+        lines: ['Мужская', 'коллекция', 'осень-зима', '2026'],
+      },
+      images: [
+        photo(
+          mensHero,
+          { inset: 0, width: '100%', height: '100%', objectPosition: 'center center' },
+          'Мужская коллекция осень-зима 2026',
+        ),
+      ],
+    },
+    grid: [
+      photo(mensGrid1Left, { width: '100%', height: '100%', objectPosition: 'center center' }, 'Образ 1'),
+      photo(mensGrid1Right, { width: '100%', height: '100%', objectPosition: 'center center' }, 'Образ 2'),
+      photo(mensGrid2Left, { width: '100%', height: '100%', objectPosition: 'center center' }, 'Образ 3'),
+      photo(mensGrid2Right, { width: '100%', height: '100%', objectPosition: 'center center' }, 'Образ 4'),
+    ],
+    bands: [
+      {
+        bg: '#3a332c',
+        mobileClassName: 'mobile:aspect-[390/520]',
+        images: [
+          photo(mensFinalBand, { inset: 0, width: '100%', height: '100%', objectPosition: 'center center' }),
+        ],
       },
     ],
   },
