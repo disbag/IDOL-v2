@@ -9,8 +9,8 @@ import { footerColumns, footerSocial } from '../data/productData'
 import chevronLeft from '../assets/icons/chevron-left.svg'
 import chevronRight from '../assets/icons/chevron-right.svg'
 
-const SLIDE_MS = 550
-const EASE = 'cubic-bezier(0.77, 0, 0.175, 1)'
+const SLIDE_MS = 600
+const EASE = 'cubic-bezier(0.65, 0, 0.35, 1)'
 const PARALLAX = 8
 const PEEK_SCALE = 0.86
 
@@ -487,7 +487,7 @@ export default function LookbookPage() {
           <div
             key={i}
             ref={bindRefs(i)}
-            className="home-slide no-scrollbar absolute inset-0 overflow-x-hidden overflow-y-auto overscroll-contain"
+            className="home-slide no-scrollbar absolute inset-0 overflow-x-hidden overflow-y-auto overscroll-contain will-change-transform"
             style={style}
             onTransitionEnd={(event) => onPanelTransitionEnd(event, i)}
           >
