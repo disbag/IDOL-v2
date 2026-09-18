@@ -101,9 +101,12 @@ function PhotoGrid2x2({ items }) {
 
 function HeroHeading({ lines }) {
   return (
-    <div className="absolute bottom-[120px] right-[120px] z-[1] text-right text-white mobile:bottom-[26%] mobile:right-[40px] mobile:left-[40px] mobile:text-left">
+    <div className="absolute bottom-[162px] right-[520px] z-[1] translate-x-full text-left text-white mobile:bottom-[26%] mobile:right-[40px] mobile:left-[40px] mobile:translate-x-0">
       {lines.map((line) => (
-        <p key={line} className="text-[28px] font-bold leading-[34px] mobile:text-[22px] mobile:leading-[27px]">
+        <p
+          key={line}
+          className="whitespace-nowrap text-[44px] font-extrabold leading-[40px] mobile:whitespace-normal mobile:text-[28px] mobile:leading-[32px]"
+        >
           {line}
         </p>
       ))}
