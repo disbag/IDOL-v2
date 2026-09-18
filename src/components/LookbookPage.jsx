@@ -101,7 +101,7 @@ function PhotoGrid2x2({ items }) {
 
 function HeroHeading({ lines }) {
   return (
-    <div className="absolute bottom-[162px] right-[520px] z-[1] translate-x-full text-left text-white mobile:bottom-[26%] mobile:right-[40px] mobile:left-[40px] mobile:translate-x-0">
+    <div className="absolute bottom-[162px] right-[520px] z-[1] translate-x-full text-left text-white mobile:bottom-[40px] mobile:left-[40px] mobile:right-[40px] mobile:translate-x-0">
       {lines.map((line) => (
         <p
           key={line}
@@ -219,8 +219,8 @@ function SlideBody({ slide, active }) {
             </div>
           )}
           {slide.ctaBox && i === slide.bands.length - 1 && (
-            <div className="absolute bottom-[90px] left-[90px] z-[1] flex w-[372px] flex-col items-start gap-[20px] bg-[#181818] p-[40px] mobile:bottom-[20px] mobile:left-[20px] mobile:right-[20px] mobile:w-auto mobile:p-[24px]">
-              <p className="text-[14px] uppercase leading-[20px] text-white">{slide.ctaBox.text}</p>
+            <div className="absolute bottom-[90px] left-[90px] z-[1] flex w-[372px] flex-col items-start gap-[20px] bg-[#181818] p-[40px] mobile:bottom-[40px] mobile:left-[40px] mobile:right-[40px] mobile:w-auto">
+              <p className="text-[14px] font-normal uppercase leading-[20px] text-white">{slide.ctaBox.text}</p>
               <CollectionButton className="mobile:w-full" />
             </div>
           )}
