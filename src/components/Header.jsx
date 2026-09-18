@@ -69,7 +69,7 @@ export default function Header({ cartCount = 4, opaqueAfterRef, scrollRootRef, s
 
       <a
         href="#"
-        className={`h-[44px] w-[120px] shrink-0 mobile:h-[24px] mobile:w-[64px] ${
+        className={`h-[44px] w-[120px] shrink-0 mobile:h-[40px] mobile:w-[120px] ${
           scrolled || alwaysShowLogo ? '' : 'mobile:hidden'
         }`}
       >
