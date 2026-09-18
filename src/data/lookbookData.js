@@ -167,7 +167,7 @@ export const homeSlides = [
     ],
     bands: [
       {
-        bg: '#3a332c',
+        bg: '#c4c3c1',
         mobileClassName: 'mobile:aspect-[390/520]',
         images: [
           photo(mensFinalBand, { inset: 0, width: '100%', height: '100%', objectPosition: 'center center' }),
