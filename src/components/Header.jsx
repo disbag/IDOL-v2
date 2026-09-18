@@ -6,7 +6,7 @@ import userIcon from '../assets/icons/user.svg'
 import heartIcon from '../assets/icons/heart-outline.svg'
 import cartIcon from '../assets/icons/cart.svg'
 
-export default function Header({ cartCount = 4, opaqueAfterRef, scrollRootRef, scrollKey }) {
+export default function Header({ cartCount = 4, opaqueAfterRef, scrollRootRef, scrollKey, alwaysShowLogo = false }) {
   const headerRef = useRef(null)
   const [scrolled, setScrolled] = useState(false)
 
@@ -69,7 +69,9 @@ export default function Header({ cartCount = 4, opaqueAfterRef, scrollRootRef, s
 
       <a
         href="#"
-        className={`h-[44px] w-[120px] shrink-0 mobile:h-[24px] mobile:w-[64px] ${scrolled ? '' : 'mobile:hidden'}`}
+        className={`h-[44px] w-[120px] shrink-0 mobile:h-[24px] mobile:w-[64px] ${
+          scrolled || alwaysShowLogo ? '' : 'mobile:hidden'
+        }`}
       >
         <img src={logo} alt="IDOL" className="size-full" />
       </a>

@@ -219,7 +219,7 @@ function SlideBody({ slide, active }) {
             </div>
           )}
           {slide.ctaBox && i === slide.bands.length - 1 && (
-            <div className="absolute bottom-[90px] left-[90px] z-[1] flex w-[372px] flex-col items-start gap-[20px] bg-[#181818] p-[40px] mobile:bottom-[40px] mobile:left-[40px] mobile:right-[40px] mobile:w-auto">
+            <div className="absolute bottom-[90px] left-[90px] z-[1] flex w-[372px] flex-col items-start gap-[20px] bg-[#181818] p-[40px] mobile:bottom-[40px] mobile:left-[40px] mobile:right-[40px] mobile:w-auto mobile:bg-transparent mobile:p-0">
               <p className="text-[14px] font-normal uppercase leading-[20px] text-white">{slide.ctaBox.text}</p>
               <CollectionButton className="mobile:w-full" />
             </div>
